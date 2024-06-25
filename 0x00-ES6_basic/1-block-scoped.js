@@ -5,6 +5,10 @@ export default function taskBlock(trueOrFalse) {
   if (trueOrFalse) {
     const task = true;
     const task2 = false;
+
+    if (task && task2) {
+      console.log('task and task2 are true');
+    }
   }
 
   return [task, task2];
