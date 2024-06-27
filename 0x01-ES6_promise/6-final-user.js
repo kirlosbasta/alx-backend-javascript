@@ -9,5 +9,6 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
       results.forEach((result) => {
         report.push({ status: result.status, value: result.value });
       });
+      return report;
     });
 }
