@@ -7,7 +7,10 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled(promises)
     .then((results) => {
       results.forEach((result) => {
-        report.push({ status: result.status, value: result.value });
+        report.push({
+          status: result.status,
+          value: result.status === 'rejected' ? result.reason.toString() : result.value,
+        });
       });
       return report;
     });
