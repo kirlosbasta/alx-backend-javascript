@@ -6,6 +6,7 @@
     "scripts": {
       "start-dev": "webpack-dev-server --open",
       "build": "webpack",
+      "compile": "npx ts-node",
       "test": "jest"
     },
     "keywords": [],
