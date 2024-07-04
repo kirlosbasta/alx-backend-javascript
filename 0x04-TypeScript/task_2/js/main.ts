@@ -50,6 +50,16 @@ function createEmployee(salary: number | string): Director | Teacher {
     }
 }
 
-console.log(createEmployee(200));
-console.log(createEmployee(1000));
-console.log(createEmployee('$500'));
+function isDirector(employee: Teacher | Director): boolean {
+    return employee instanceof Director;
+}
+
+function executeWork(employee: Teacher | Director): string {
+    if (employee instanceof Teacher) {
+        return employee.workTeacherTasks();
+    } else {
+        return employee.workDirectorTasks();
+    }
+}
+
+module.exports = {isDirector, executeWork, createEmployee};
