@@ -62,4 +62,10 @@ function executeWork(employee: Teacher | Director): string {
     }
 }
 
+type Subjects = 'Math' | 'History';
+
+function teachClass(todayClass: Subjects): string {
+    return todayClass === 'Math'? 'Teaching Math' : 'Teaching History';
+}
+
 module.exports = {isDirector, executeWork, createEmployee};
