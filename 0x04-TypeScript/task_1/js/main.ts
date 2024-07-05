@@ -4,7 +4,7 @@ interface Teacher {
     fullTimeEmployee: boolean;
     yearsOfExperience?: number;
     location: string;
-    [key: string]: any;
+    [key: string]: unknown;
 }
 
 interface Directors extends Teacher {
@@ -25,7 +25,7 @@ interface StudentClassInterface {
     lastName: string;
 
     workOnHomework(): string;
-    displayName(): string
+    displayName(): string;
 }
 
 class StudentClass implements StudentClassInterface {
