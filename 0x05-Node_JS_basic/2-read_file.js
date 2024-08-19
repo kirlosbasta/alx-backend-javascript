@@ -10,7 +10,7 @@ function countStudents(path) {
   content = content.trim();
   const ArrayContent = content.split('\n').slice(1);
   const fields = {};
-  ArrayContent.forEach((elem, i, arr) => {
+  ArrayContent.forEach((elem) => {
     const student = elem.split(',');
     const field = student.at(-1);
     if (Object.hasOwn(fields, field)) {
