@@ -9,8 +9,7 @@ function countStudents(path) {
     .map((student) => student.split(','))
     .filter((student) => student.length === 4).slice(1);
   const fields = {};
-  ArrayContent.forEach((elem) => {
-    const student = elem.split(',');
+  ArrayContent.forEach((student) => {
     const field = student.at(-1);
     if (Object.hasOwn(fields, field)) {
       fields[field].count += 1;
