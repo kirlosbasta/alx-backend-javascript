@@ -2,26 +2,28 @@ const fs = require('fs');
 
 function countStudents(path) {
   if (!fs.existsSync(path)) {
-    throw new Error('Cannot load the database');
+    throw Error('Cannot load the database');
   }
-  const content = fs.readFileSync(path, 'utf-8');
-  const ArrayContent = content.split('\n')
+
+  const data = fs.readFileSync(path, 'utf8');
+  const students = data.split('\n')
     .map((student) => student.split(','))
-    .filter((student) => student.length === 4).slice(1);
-  const fields = {};
-  ArrayContent.forEach((student) => {
-    const field = student.at(-1);
-    if (Object.hasOwn(fields, field)) {
-      fields[field].count += 1;
-      fields[field].names.push(student[0]);
-    } else {
-      fields[field] = { count: 1, names: [student[0]] };
-    }
-  });
-  console.log(`Number of students: ${ArrayContent.length}`);
-  for (const field of Object.keys(fields)) {
-    console.log(`Number of students in ${field}: ${fields[field].count}. List: ${fields[field].names.join(', ')}`);
-  }
+    .filter((student) => student.length === 4 && student[0] !== 'firstname')
+    .map((student) => ({
+      firstName: student[0],
+      lastName: student[1],
+      age: student[2],
+      field: student[3],
+    }));
+  const csStudents = students
+    .filter((student) => student.field === 'CS')
+    .map((student) => student.firstName);
+  const sweStudents = students
+    .filter((student) => student.field === 'SWE')
+    .map((student) => student.firstName);
+  console.log(`Number of students: ${students.length}`);
+  console.log(`Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}`);
+  console.log(`Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`);
 }
 
 module.exports = countStudents;
