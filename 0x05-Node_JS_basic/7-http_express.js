@@ -40,12 +40,12 @@ app.get('/', (req, res) => {
 app.get('/students', (req, res) => {
   res.setHeader('Content-Type', 'text/plain');
   const database = process.argv[2];
-  let buffer = 'This is the list of our students\n';
+  res.write('This is the list of our students\n');
   countStudents(database).then((data) => {
-    buffer += data;
+    res.write(data);
   }).catch((err) => {
-    res.send(err.message);
-  }).finally(() => res.send(buffer));
+    res.write(err.message);
+  }).finally(() => res.end());
 });
 
 app.listen(1245);
