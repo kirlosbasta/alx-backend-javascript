@@ -4,9 +4,10 @@ function countStudents(path) {
   if (!fs.existsSync(path)) {
     throw new Error('Cannot load the database');
   }
-  let content = fs.readFileSync(path, 'utf-8');
-  content = content.trim();
-  const ArrayContent = content.split('\n').slice(1);
+  const content = fs.readFileSync(path, 'utf-8');
+  const ArrayContent = content.split('\n')
+    .map((student) => student.split(','))
+    .filter((student) => student.length === 4).slice(1);
   const fields = {};
   ArrayContent.forEach((elem) => {
     const student = elem.split(',');
