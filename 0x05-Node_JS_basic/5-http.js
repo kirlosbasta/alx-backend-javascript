@@ -43,7 +43,7 @@ const app = http.createServer((req, res) => {
     countStudents(database).then((data) => {
       res.write(data);
     }).catch((err) => {
-      res.write(err);
+      res.write(err.message);
     }).finally(() => res.end());
   }
 }).listen(1245);
