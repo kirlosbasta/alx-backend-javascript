@@ -2,11 +2,11 @@ import readDatabase from '../utils';
 
 export default class StudentsController {
   static getAllStudents(req, res) {
-    res.write('This is the list of our students\n');
     readDatabase(process.argv[2])
       .then((fields) => {
         const orderedKey = Object.keys(fields).sort();
         res.status(200);
+        res.write('This is the list of our students\n');
         for (let i = 0; i < orderedKey.length; i += 1) {
           res.write(`Number of students in ${orderedKey[i]}: ${fields[orderedKey[i]].length}. List: ${fields[orderedKey[i]].join(', ')}`);
           if (i !== orderedKey.length - 1) {
