@@ -1,4 +1,4 @@
-exports.Utils = {
+const Utils = {
   calculateNumber(type, a, b) {
     let result;
     if (type === 'SUM') {
@@ -15,3 +15,5 @@ exports.Utils = {
     return result;
   },
 };
+
+module.exports = Utils;
