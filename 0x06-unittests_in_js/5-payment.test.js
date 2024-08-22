@@ -13,6 +13,7 @@ describe('sendPaymentRequestToApi', () => {
   afterEach(() => {
     logSpy.restore();
   });
+
   it('should call Utill.calculateNumber 120, 20', () => {
     sendPaymentRequestToApi(100, 20);
     expect(logSpy.calledOnceWith('The total is: 120')).to.be.true;
